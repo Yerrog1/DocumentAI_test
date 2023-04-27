@@ -10,9 +10,10 @@ En este repositorio se encuentra el ejemplo de como sacar datos de una tabla de 
 2. Instalar las dependencias con `pip install -r requirements.txt`
 3. Crear un proyecto en Google Cloud y activar la API de Document AI
 4. Crear un servicio de cuenta de servicio y descargar la clave en formato JSON
-5. Modificar la ruta de la clave en el archivo `main.py` si es necesario
-6. Modificar la ruta del archivo PDF en el archivo `main.py` si es necesario
-7. Ejecutar el script con `python main.py` o ejecutandolo en el IDE
+5. Renombrar el archivo JSON a `ServiceAccountToken.json` y colocarlo en la carpeta ./files
+6. Modificar la ruta de la clave en el archivo `main.py` si es necesario
+7. Modificar la ruta del archivo PDF en el archivo `main.py` si es necesario
+8. Ejecutar el script con `python main.py` o ejecutandolo en el IDE
 
 
 ## TODO:
