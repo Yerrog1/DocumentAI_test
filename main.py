@@ -84,23 +84,21 @@ def text_anchor_to_text(text_anchor: documentai.Document.TextAnchor, text: str) 
         response += text[start_index:end_index]
     return response.strip().replace("\n", " ")
 
+## Aqui empieza el codigo
+key_path = 'files/ServiceAccountToken.json'                     # Ruta a la clave de la cuenta de servicio
+file_path = "files/pdf/spairal.pdf"                             # Ruta al archivo a procesar
+project_id = "763668084392" 
+proccesor_id = "3e55862fde489810"
 
-key_path = 'files/ServiceAccountToken.json'
+LOCATION = "eu"  
+MIME_TYPE = "application/pdf"       
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key_path
 
-
-PROJECT_ID = "763668084392"
-LOCATION = "eu"  # Format is 'us' or 'eu'
-PROCESSOR_ID = "3e55862fde489810"  # Create processor before running sample
-# PROCESSOR_ID = "bd051527b954d947"  # IA entrenada?
-FILE_PATH = "files/pdf/spairal.pdf"
-MIME_TYPE = "application/pdf"
-
 document = online_process(
-    project_id=PROJECT_ID,
+    project_id=project_id,
+    processor_id=proccesor_id,
+    file_path=file_path,
     location=LOCATION,
-    processor_id=PROCESSOR_ID,
-    file_path=FILE_PATH,
     mime_type=MIME_TYPE,
 )
 
@@ -123,8 +121,8 @@ for page in document.pages:
             data=body_row_values,
             columns=pd.MultiIndex.from_arrays(header_row_values),
         )
-        # print(f"Page {page.page_number} - Table {index}")
-        # print(df)
+        print(f"Page {page.page_number} - Table {index}")
+        print(df)
 
         output_filename = f"{output_file_prefix}_pg{page.page_number}_tb{index}.csv"
         df.to_csv(output_filename, index=False)
